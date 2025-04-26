@@ -1,10 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from singleSimulation import run_single_simulation
-from readConstants import read_constants
-from plotter import plotter
-from threeDplotter import threeDPlotter 
+from plotters.plotter import plotter
+from plotters.threeDplotter import threeDPlotter 
 import os
+import argparse
+#also argrunsim in here
 
 def read_params(fileName):
     constants = {}
@@ -24,25 +25,28 @@ def read_params(fileName):
     return constants
 
 def main():
+    parser = argparse.ArgumentParser(description="Run the simulation with a constants file.")
+    parser.add_argument('-mc', type=str, required = True, help='Path to the material constants file')
+
+    args = parser.parse_args()
+    print(args)
     # --- Configuration ---
-    simulation_script_name = 'runArg.py'
-    constants_file_name = 'constants.txt'
+    simulation_script_name = 'ArgsRunSimulation.py'
+    constants_file_name = args.mc
     params_files_name = 'MVTparams.txt'
 
-    params = read_params(params_files_name)
 
+    # read params
+    params = read_params(params_files_name)
     print(params)
-    # Define the range and number of Mass values to test
     mass_start = params['mass_start'] # kg
     mass_end = params['mass_start']     # kg
     num_points = params['num_points']      # Number of simulation runs
-
-    
     vy_start = params['vy_start']  #m/s
     vy_end = params['vy_end']  # m/s 
     
+
     vy_value_to_test = np.linspace(vy_start, vy_end, num_points) # spacer
-    # --- MODIFICATION: Generate Mass values using LINEAR spacing ---
     mass_values_to_test = np.linspace(mass_start, mass_end, num_points) # Use linspace for linear scale
     
 
