@@ -27,7 +27,7 @@ def main():
     # --- Configuration ---
     simulation_script_name = 'runArg.py'
     constants_file_name = 'constants.txt'
-    params_files_name = 'params.txt'
+    params_files_name = 'MVTparams.txt'
 
     params = read_params(params_files_name)
 

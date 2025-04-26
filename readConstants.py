@@ -28,7 +28,7 @@ def read_constants(filename="constants.txt"):
     # Define required keys FOR THIS SCRIPT (needs V_Y_initial, M is from args)
     required_keys = ['N_springs', 'dx', 'm', 'k', 'V_X_projectile',
                      'X_projectile_start', 'Y_projectile_start', 'R', 'dt',
-                     'timesteps', 'epsilon', 'V_Y_initial'] # Added V_Y_initial
+                     'timesteps', 'epsilon'] # Added V_Y_initial
     missing_keys = [key for key in required_keys if key not in constants]
     if missing_keys:
         print(f"Error: Missing required constants in '{filename}': {', '.join(missing_keys)}", file=sys.stderr)
@@ -41,10 +41,10 @@ def read_constants(filename="constants.txt"):
         constants['dx'] = float(constants['dx'])
         constants['m'] = float(constants['m'])
         constants['k'] = float(constants['k'])
-        constants['V_X_projectile'] = float(constants['V_X_projectile'])
+        # constants['V_X_projectile'] = float(constants['V_X_projectile'])
         constants['X_projectile_start'] = float(constants['X_projectile_start'])
         constants['Y_projectile_start'] = float(constants['Y_projectile_start'])
-        constants['V_Y_initial'] = float(constants['V_Y_initial']) # Ensure V_Y is float
+        # constants['V_Y_initial'] = float(constants['V_Y_initial']) # Ensure V_Y is float
         constants['R'] = float(constants['R'])
         constants['dt'] = float(constants['dt'])
         constants['timesteps'] = int(constants['timesteps'])

@@ -1,8 +1,18 @@
 import subprocess
 import os
 import sys
+import time
 
+def timer(func):
+    def wrapper(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+        print(f"{func.__name__} took {end - start:.4f} seconds")
+        return result
+    return wrapper
 
+@timer
 def run_single_simulation(mass_value,vy_value,constants_file='constants.txt', simulation_script='SPsimulation_mass.py'):
     """
     Runs the simulation script SPsimulation_mass.py for a given projectile mass (M)
