@@ -1,7 +1,34 @@
 # MISSFIT mechnical Simulation
 
+
+## Plotters
+they don't work
+
 ## Simulation Paramaters and Constants
-Constants.txt
+1.Constants.txt
+2.MVTParams.txt
+
+so we are simulating a wall of springs for a given material and a pojectile, hitting the wall hard, 
+
+1. constants.txt
+this is the material constants, the one you need to make more of, this one is default steel, but you need add another one based off of the calculations of the equation given by Dr. Petritris
+
+material_name = Steel
+m=0.0000000058875 # Mass per spring element (kg)
+k=175.0           # Spring constant per element (N/m) - CORRECTED based on calculation
+
+there are the only constants that you need to change
+
+2. MVTParams.txt
+I'm bad at naming so at this point I don't know why I named like this. 
+this is the Paramers of the entire simulation, for ranges of Mass and Velocity and how many data points that you want to collect. 
+
+the data point should be a squre 
+
+3. materialSummary.csv
+Material,Young's Modulus,Melting Point,Specific Heat
+it's a table of contents
+
 
 
 ## Simulation scripts
@@ -24,3 +51,10 @@ the most important one, and this is the one you will be directly interface with 
 `python3 runSim.py -mc <material_constant.txt>`
 the `-mc` flag stands for material constants, and when you put in the file name don't type the brackets
 at the end outputs a csv contains 3D infomation, containing all possible combaintaions of given mass and v_y 
+
+
+## OutputData
+outputed data in format
+you need to plot this
+
+
