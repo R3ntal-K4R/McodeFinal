@@ -26,7 +26,7 @@ def read_constants(filename="constants.txt"):
         sys.exit(1)
 
     # Define required keys FOR THIS SCRIPT (needs V_Y_initial, M is from args)
-    required_keys = ['N_springs', 'dx', 'm', 'k', 'V_X_projectile',
+    required_keys = ['material_name','N_springs', 'dx', 'm', 'k', 'V_X_projectile',
                      'X_projectile_start', 'Y_projectile_start', 'R', 'dt',
                      'timesteps', 'epsilon'] # Added V_Y_initial
     missing_keys = [key for key in required_keys if key not in constants]
@@ -37,6 +37,7 @@ def read_constants(filename="constants.txt"):
 
     # Convert types explicitly after loading
     try:
+        constants['material_name'] = str(constants['material_name'])
         constants['N_springs'] = int(constants['N_springs'])
         constants['dx'] = float(constants['dx'])
         constants['m'] = float(constants['m'])

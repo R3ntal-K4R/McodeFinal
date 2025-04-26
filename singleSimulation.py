@@ -42,9 +42,9 @@ def run_single_simulation(mass_value,vy_value,constants_file='constants.txt', si
             check=True,
             timeout=300
         )
-        energy_loss = float(result.stdout.strip())
-        print(f"  Successfully ran for Mass = {mass_value:<10.4e}, Vy = {vy_value: <10.4e} -> Energy Loss = {energy_loss:.4e}")
-        return energy_loss
+        energy_loss, max_displacement = map(float, result.stdout.strip().split(','))
+        print(f"  Successfully ran for Mass = {mass_value:<10.4e}, Vy = {vy_value: <10.4e} -> Energy Loss = {energy_loss:.4e}, Max Displacement = {max_displacement:.4e}")
+        return energy_loss, max_displacement
 
     except subprocess.CalledProcessError as e:
         print(f"Error running simulation for Mass = {mass_value},Vy = {vy_value} : Process failed.", file=sys.stderr)

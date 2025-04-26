@@ -27,6 +27,7 @@ def run_simulation(constants, M, V_y): # Takes Mass as argument
 
     # Calculate initial energy
     initial_energy = projectile.getEnergy()
+    max_displacement = 0
 
     # --- Simulation Loop  ---
     for i in range(timesteps):
@@ -46,7 +47,8 @@ def run_simulation(constants, M, V_y): # Takes Mass as argument
                         forces_on_springs[idx] = -force_spring_on_proj
 
         projectile.update(total_force_on_projectile[0], total_force_on_projectile[1], dt)
-
+        if max_displacement > projectile.Y:
+            max_displacement = projectile.Y
         for idx, spring in enumerate(springs):
             internal_force_y = spring.get_F_Y()
             internal_force_x = spring.get_F_X()
@@ -59,7 +61,7 @@ def run_simulation(constants, M, V_y): # Takes Mass as argument
     final_energy = projectile.getEnergy()
     energy_loss = initial_energy - final_energy
 
-    return energy_loss
+    return energy_loss, max_displacement
 
 def main():
     # --- Argument Parsing ---
@@ -79,10 +81,10 @@ def main():
     mass_val = args.mass
     vy_val = args.vy
     # Run simulation for the single mass provided
-    energy_loss = run_simulation(constants, mass_val,vy_val) # Pass mass to simulation
+    energy_loss,max_displacement = run_simulation(constants, mass_val,vy_val) # Pass mass to simulation
 
-    # Output *only* the energy loss
-    print(f"{energy_loss}")
+    # Output  energy loss and max_displacement
+    print(f"{energy_loss},{max_displacement}")
   
     # Optional status message to stderr
     # print(f"Sim Mass={mass_val:.4e} kg -> E_loss={energy_loss:.6e}", file=sys.stderr)
