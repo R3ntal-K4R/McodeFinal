@@ -102,7 +102,7 @@ def main():
     else:
         print(f"\nCollected {len(results_mass_np)}, {len(results_v_y_np)} results. Generating CSV...")
         points = np.column_stack((results_mass_np,results_v_y_np,results_energy_loss_magnitude,results_max_displacement,results_temp_change))
-        title = (f"Vy[{vy_start:.2e}-{vy_start:.2e}]|M[{mass_start:.2e}-{mass_start:.2e}]|num[{num_points}]")
+        title = (f"Vy[{vy_start:.2e}-{vy_start:.2e}]_M[{mass_start:.2e}-{mass_start:.2e}]_num[{num_points}]")
         np.savetxt(f"./OutputData/{title}.csv", points, delimiter=",", header="mass,v_y,Eloss,Dmax,dT", comments='')
         print(f"\nCollected {len(results_mass_np)}, {len(results_v_y_np)} results. Generating plot...")
         # plotter(results_mass_np,results_energy_loss_magnitude)
