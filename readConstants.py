@@ -3,10 +3,13 @@ import sys
 def read_constants(filename="constants.txt"):
     """Reads constants from a specified file, handling inline comments."""
     constants = {}
+    #makes a dict
     try:
+    #its try because the file might not exist
         with open(filename, 'r') as f:
             for line in f:
                 line = line.split('#', 1)[0].strip() # Remove comments and strip
+                #remove all comment lines
                 if line and '=' in line:
                     try:
                         key, value = line.split('=', 1)
