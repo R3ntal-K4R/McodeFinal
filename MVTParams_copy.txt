@@ -1,0 +1,5 @@
+mass_start = 0.00001 # kg
+mass_end = 0.01    # kg
+vy_start = -0.1 #m/s
+vy_end = -2000 # m/s 
+num_points = 25      # Number of simulation runs
