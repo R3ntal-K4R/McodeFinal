@@ -1,0 +1,38 @@
+# Constants updated for modeling a 0.03m thick steel plate
+# Steel Properties used: Density=7850 kg/m^3, Young's Modulus=2.1e11 Pa
+# Spring parameters calculated based on plate segment properties:
+material_name = Nitinol (Martensite)
+m=2.56E+10 # Mass per spring element (kg)
+k=1.0           # Spring constant per element (N/m) - CORRECTED based on calculation
+dx=0.000005       # Spring spacing (m)
+
+M=0.000000947       # Projectile Mass (kg) (Value from your previous constants)
+R=0.00001         # Particle radius (10 micrometers)
+
+# --- ADJUSTED SIMULATION LAYOUT ---
+N_springs=100       # Number of springs (covers 500 um) - Adjust as needed
+# Centered the projectile start X over the spring array
+X_projectile_start = 0.0002475 # = (100 - 1) * 0.000005 / 2
+Y_projectile_start=0.0001  # Start Height (m) - Adjusted closer, check if appropriate
+V_X_projectile=0
+
+# --- ADJUSTED SIMULATION PRECISION ---
+# !! LIKELY CAUSE OF ERRORS: dt might be TOO SMALL and timesteps TOO LARGE !!
+# Try INCREASING dt (e.g., 1e-7 or 1e-6) and DECREASING timesteps
+# dt=0.000000001    # Original suggestion (1e-9) - Very Small!
+dt=0.0000001      # SUGGESTION 1: Try 1e-7
+# dt=0.000001       # SUGGESTION 2: Try 1e-6
+
+# timesteps=10000000 # Original suggestion (1e7) - Very Large!
+timesteps=100000     # SUGGESTION: Try fewer steps first - Adjust as needed
+# !! End potential error cause !!
+
+# DECREASED epsilon to be much smaller than dx/R
+epsilon=0.000000000001 # 1e-12
+
+# --- Required for SPsimulation_mass.py ---
+# Initial velocity from your previous constants
+# V_Y_initial = -2000
+
+# List of V_y values to test (in m/s) - comma separated (Informational)
+# V_y_values = -5000, -7500, -10000, -12500, -15000
