@@ -33,7 +33,7 @@ def main():
     # --- Configuration ---
     simulation_script_name = 'ArgsRunSimulation.py'
     constants_file_name = args.mc
-    params_files_name = 'MVTparams.txt'
+    params_files_name = 'MVTParams.txt'
 
     params = read_params(params_files_name)
     print(params)
