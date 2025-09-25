@@ -1,7 +1,7 @@
 # Constants updated for modeling a 0.03m thick steel plate
 # Steel Properties used: Density=7850 kg/m^3, Young's Modulus=2.1e11 Pa
 # Spring parameters calculated based on plate segment properties:
-material_name = Aluminum
+material_name = Aluminium
 m=1.27E+10 # Mass per spring element (kg)
 k=1.0           # Spring constant per element (N/m) - CORRECTED based on calculation
 dx=0.000005       # Spring spacing (m)
